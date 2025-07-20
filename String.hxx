@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 class String
 {
   public:
@@ -13,4 +15,9 @@ class String
     String& operator+=(const char* pointerToCString) = delete;
     String& operator+=(const String& referenceToString) = delete;
     String& operator=(String&& referenceToString) = delete;
+
+  private:
+    char* pointerToStorage{};
+    std::size_t sizeStorage;
+    std::size_t length{};
 };
