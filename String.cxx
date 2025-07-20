@@ -35,3 +35,13 @@ String::String(const char* pointerToCString)
     m_length = m_sizeStorage = length;
     std::strncpy(m_pointerToStorage, pointerToCString, length);
 }
+
+std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
+{
+    for (std::size_t position{0u}; position < referenceToString.m_length; ++position)
+    {
+        referenceToStream << referenceToString.m_pointerToStorage[position];
+    }
+
+    return referenceToStream;
+}

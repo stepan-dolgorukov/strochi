@@ -1,10 +1,12 @@
 #pragma once
 
 #include <cstddef>
+#include <ostream>
 
 class String
 {
   public:
+    ~String();
     String();
     String(const char* pointerToCString);
     String(const String& referenceToString) = delete;
@@ -14,7 +16,7 @@ class String
     String& operator=(String&& referenceToString) = delete;
     String& operator+=(const char* pointerToCString) = delete;
     String& operator+=(const String& referenceToString) = delete;
-    ~String();
+    friend std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString);
 
   private:
     char* m_pointerToStorage{nullptr};
