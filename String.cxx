@@ -22,9 +22,11 @@ String::String(const char* pointerToCString)
 
     m_pointerToStorage = reinterpret_cast<char*>(std::malloc(length));
 
-    if (m_pointerToStorage == nullptr) {
+    if (m_pointerToStorage == nullptr)
+    {
         throw std::runtime_error{"fail to allocate memory for string"};
     }
 
     m_length = m_sizeStorage = length;
+    std::strncpy(m_pointerToStorage, pointerToCString, length);
 }
