@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.22)
 project(strochi)
 add_library(strochi SHARED String.cxx)
 add_executable(test Test.cxx)
