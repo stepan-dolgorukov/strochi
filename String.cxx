@@ -4,6 +4,11 @@
 
 #include "String.hxx"
 
+String::~String()
+{
+    std::free(m_pointerToStorage);
+}
+
 String::String() : m_pointerToStorage{nullptr} {}
 
 String::String(const char* pointerToCString)

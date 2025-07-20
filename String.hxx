@@ -14,6 +14,7 @@ class String
     String& operator=(String&& referenceToString) = delete;
     String& operator+=(const char* pointerToCString) = delete;
     String& operator+=(const String& referenceToString) = delete;
+    ~String();
 
   private:
     char* m_pointerToStorage{nullptr};
