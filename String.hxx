@@ -16,7 +16,7 @@ class String
     String& operator+=(const String& referenceToString) = delete;
 
   private:
-    char* pointerToStorage{};
-    std::size_t sizeStorage;
-    std::size_t length{};
+    char* pointerToStorage{nullptr};
+    std::size_t sizeStorage{0u};
+    std::size_t length{0u};
 };
