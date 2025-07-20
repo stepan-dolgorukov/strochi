@@ -1,6 +1,10 @@
+#include <gtest/gtest.h>
+#include <iostream>
+
 #include "String.hxx"
 
-int main()
+int main(int amountArguments, char** pointerToArguments)
 {
-    return 0;
+    testing::InitGoogleTest(&amountArguments, pointerToArguments);
+    return RUN_ALL_TESTS();
 }
