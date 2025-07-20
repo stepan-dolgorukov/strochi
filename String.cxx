@@ -1,3 +1,30 @@
+#include <cstdlib>
+#include <cstring>
+#include <stdexcept>
+
 #include "String.hxx"
 
-String::String() {}
+String::String() : m_pointerToStorage{nullptr} {}
+
+String::String(const char* pointerToCString)
+{
+    if (pointerToCString == nullptr)
+    {
+        return;
+    }
+
+    const std::size_t length{std::strlen(pointerToCString)};
+
+    if (length == 0u)
+    {
+        return;
+    }
+
+    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(length));
+
+    if (m_pointerToStorage == nullptr) {
+        throw std::runtime_error{"fail to allocate memory for string"};
+    }
+
+    m_length = m_sizeStorage = length;
+}
