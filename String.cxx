@@ -124,6 +124,11 @@ String& String::operator+=(const String& referenceToString)
     return *this;
 }
 
+String& String::operator+=(const char* pointerToCString)
+{
+    return operator+=(String{pointerToCString});
+}
+
 bool operator==(const String& referenceToLeftString, const String& referenceToRightString)
 {
     if (referenceToLeftString.m_length != referenceToRightString.m_length)

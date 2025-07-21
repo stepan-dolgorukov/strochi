@@ -14,7 +14,7 @@ class String
     String& operator=(const String& referenceToString);
     String& operator=(String&& referenceToString);
     String& operator=(const char* pointerToCString);
-    String& operator+=(const char* pointerToCString) = delete;
+    String& operator+=(const char* pointerToCString);
     String& operator+=(const String& referenceToString);
     friend bool operator==(const String& referenceToLeftString, const String& referenceToRightString);
     friend bool operator!=(const String& referenceToLeftString, const String& referenceToRightString);
