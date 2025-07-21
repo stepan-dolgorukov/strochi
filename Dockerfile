@@ -16,6 +16,6 @@ RUN \
   cd build && \
   cmake ../ && \
   make && \
-  cp ./test ../
+  mv ./test ../
 
 ENTRYPOINT [ "./test" ]
