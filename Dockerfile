@@ -9,7 +9,6 @@ COPY \
 
 RUN \
   apt-get update --assume-yes && \
-  apt-get upgrade --assume-yes && \
   apt-get install --assume-yes cmake g++ git
 
 RUN \
