@@ -98,6 +98,11 @@ String& String::operator=(String&& referenceToString)
     return *this;
 }
 
+String& String::operator=(const char* pointerToCString)
+{
+    return operator=(String{pointerToCString});
+}
+
 String& String::operator+=(const String& referenceToString)
 {
     if (referenceToString.m_length == 0)
