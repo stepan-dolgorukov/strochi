@@ -50,6 +50,16 @@ String::String(const String& referenceToString)
     m_length = referenceToString.m_length;
 }
 
+String::String(String&& referenceToString)
+    : m_pointerToStorage{referenceToString.m_pointerToStorage},
+      m_sizeStorage{referenceToString.m_sizeStorage},
+      m_length{referenceToString.m_length}
+{
+    referenceToString.m_pointerToStorage = nullptr;
+    referenceToString.m_sizeStorage = 0u;
+    referenceToString.m_length = 0u;
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
