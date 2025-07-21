@@ -60,6 +60,28 @@ String::String(String&& referenceToString)
     referenceToString.m_length = 0u;
 }
 
+String& String::operator=(const String& referenceToString)
+{
+    if (this == &referenceToString)
+    {
+        return *this;
+    }
+
+    std::free(m_pointerToStorage);
+    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(referenceToString.m_sizeStorage));
+
+    if (m_pointerToStorage == nullptr)
+    {
+        throw std::runtime_error{"fail to allocate memory for string"};
+    }
+
+    m_sizeStorage = referenceToString.m_sizeStorage;
+    m_length = referenceToString.m_length;
+    std::strncpy(m_pointerToStorage, referenceToString.m_pointerToStorage, m_length);
+
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
