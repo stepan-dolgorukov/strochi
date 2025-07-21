@@ -82,6 +82,22 @@ String& String::operator=(const String& referenceToString)
     return *this;
 }
 
+String& String::operator=(String&& referenceToString)
+{
+    if (this == &referenceToString)
+    {
+        return *this;
+    }
+
+    std::free(m_pointerToStorage);
+    m_sizeStorage = referenceToString.m_sizeStorage;
+    m_pointerToStorage = referenceToString.m_pointerToStorage;
+    referenceToString.m_pointerToStorage = nullptr;
+    m_length = referenceToString.m_length;
+
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
