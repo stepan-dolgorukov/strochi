@@ -119,6 +119,24 @@ String& String::operator+=(const String& referenceToString)
     return *this;
 }
 
+bool operator==(const String& referenceToLeftString, const String& referenceToRightString)
+{
+    if (referenceToLeftString.m_length != referenceToRightString.m_length)
+    {
+        return false;
+    }
+
+    for (std::size_t position{0u}; position < referenceToLeftString.m_length; ++position)
+    {
+        if (referenceToLeftString.m_pointerToStorage[position] != referenceToRightString.m_pointerToStorage[position])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
