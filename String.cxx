@@ -52,6 +52,11 @@ String::String(const String& referenceToString)
 
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
+    if (referenceToString.m_pointerToStorage == nullptr)
+    {
+        return referenceToStream;
+    }
+
     for (std::size_t position{0u}; position < referenceToString.m_length; ++position)
     {
         referenceToStream << referenceToString.m_pointerToStorage[position];
