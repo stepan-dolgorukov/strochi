@@ -9,7 +9,7 @@ class String
     ~String();
     String();
     String(const char* pointerToCString);
-    String(const String& referenceToString) = delete;
+    String(const String& referenceToString);
     String(String&& referenceToString) = delete;
     String& operator=(const char* pointerToCString) = delete;
     String& operator=(const String& referenceToString) = delete;
