@@ -15,7 +15,7 @@ class String
     String& operator=(String&& referenceToString);
     String& operator=(const char* pointerToCString) = delete;
     String& operator+=(const char* pointerToCString) = delete;
-    String& operator+=(const String& referenceToString) = delete;
+    String& operator+=(const String& referenceToString);
     friend std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString);
 
   private:

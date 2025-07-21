@@ -98,6 +98,27 @@ String& String::operator=(String&& referenceToString)
     return *this;
 }
 
+String& String::operator+=(const String& referenceToString)
+{
+    if (referenceToString.m_length == 0)
+    {
+        return *this;
+    }
+
+    char* pointerToStorage{
+        reinterpret_cast<char*>(std::realloc(m_pointerToStorage, m_length + referenceToString.m_length))};
+
+    if (pointerToStorage == nullptr)
+    {
+        throw std::runtime_error{"fail to allocate memory for string"};
+    }
+
+    m_pointerToStorage = pointerToStorage;
+    std::strncpy(m_pointerToStorage + m_length, referenceToString.m_pointerToStorage, referenceToString.m_length);
+    m_length += referenceToString.m_length;
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
