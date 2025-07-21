@@ -142,6 +142,11 @@ bool operator==(const String& referenceToLeftString, const String& referenceToRi
     return true;
 }
 
+bool operator!=(const String& referenceToLeftString, const String& referenceToRightString)
+{
+    return !operator==(referenceToLeftString, referenceToRightString);
+}
+
 std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString)
 {
     if (referenceToString.m_pointerToStorage == nullptr)
