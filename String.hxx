@@ -21,6 +21,8 @@ class String
     friend bool operator!=(const String& referenceToLeftString, const String& referenceToRightString);
     friend std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString);
     friend std::istream& operator>>(std::istream& referenceToStream, String& referenceToString);
+    friend bool operator<(const String& referenceToLeftString, const String& referenceToRightString);
+    friend bool operator>(const String& referenceToLeftString, const String& referenceToRightString);
 
   private:
     char* m_pointerToStorage{nullptr};

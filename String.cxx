@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <istream>
@@ -186,4 +187,28 @@ std::istream& operator>>(std::istream& referenceToStream, String& referenceToStr
     }
 
     return referenceToStream;
+}
+
+bool operator<(const String& referenceToLeftString, const String& referenceToRightString)
+{
+    const auto minimum_length{std::min(referenceToLeftString.m_length, referenceToRightString.m_length)};
+
+    for (size_t position{0u}; position < minimum_length; ++position)
+    {
+        const char& referenceToLeftChar{referenceToLeftString.m_pointerToStorage[position]};
+        const char& referenceToRightChar{referenceToRightString.m_pointerToStorage[position]};
+
+        if (referenceToLeftChar != referenceToRightChar)
+        {
+            return referenceToLeftChar < referenceToRightChar;
+        }
+    }
+
+    return false;
+}
+
+bool operator>(const String& referenceToLeftString, const String& referenceToRightString)
+{
+    return !operator==(referenceToLeftString, referenceToRightString) &&
+           !operator<(referenceToLeftString, referenceToRightString);
 }
