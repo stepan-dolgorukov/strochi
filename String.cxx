@@ -175,6 +175,11 @@ std::istream& operator>>(std::istream& referenceToStream, String& referenceToStr
 
     while (referenceToStream >> std::noskipws >> symbol)
     {
+        if (symbol == '\n')
+        {
+            return referenceToStream;
+        }
+
         const char cString[2]{symbol, '\0'};
 
         referenceToString += cString;
