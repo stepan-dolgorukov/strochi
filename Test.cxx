@@ -23,12 +23,14 @@ TEST(Construct, CreateFromReferenceToString)
 
     {
         String string{"!@#$%^&*"};
-        String{string};
+        ASSERT_EQ(string, String{string});
     }
 
     {
-        String string{"!@#$%^&*"};
-        String{std::move(string)};
+        String s0{"!@#$%^&*"};
+        String s1{std::move(s0)};
+
+        ASSERT_EQ(s1, "!@#$%^&*");
     }
 }
 
