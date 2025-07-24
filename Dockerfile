@@ -5,6 +5,7 @@ COPY \
   String.cxx \
   String.hxx \
   Test.cxx \
+  Sort.cxx \
   ./
 
 RUN \
