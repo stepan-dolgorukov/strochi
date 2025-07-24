@@ -16,7 +16,7 @@ RUN \
   mkdir build && \
   cd build && \
   cmake ../ && \
-  make && \
+  make test && \
   mv ./test ../
 
 ENTRYPOINT [ "./test" ]

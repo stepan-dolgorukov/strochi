@@ -191,6 +191,16 @@ std::istream& operator>>(std::istream& referenceToStream, String& referenceToStr
 
 bool operator<(const String& referenceToLeftString, const String& referenceToRightString)
 {
+    if (referenceToLeftString.m_length == 0u)
+    {
+        return true;
+    }
+
+    if (referenceToRightString.m_length == 0u)
+    {
+        return false;
+    }
+
     const auto minimum_length{std::min(referenceToLeftString.m_length, referenceToRightString.m_length)};
 
     for (size_t position{0u}; position < minimum_length; ++position)
