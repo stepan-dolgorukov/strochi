@@ -1,5 +1,7 @@
 #include <cstdlib>
 #include <cstring>
+#include <istream>
+#include <ostream>
 #include <stdexcept>
 
 #include "String.hxx"
@@ -162,6 +164,20 @@ std::ostream& operator<<(std::ostream& referenceToStream, const String& referenc
     for (std::size_t position{0u}; position < referenceToString.m_length; ++position)
     {
         referenceToStream << referenceToString.m_pointerToStorage[position];
+    }
+
+    return referenceToStream;
+}
+
+std::istream& operator>>(std::istream& referenceToStream, String& referenceToString)
+{
+    char symbol{'\0'};
+
+    while (referenceToStream >> std::noskipws >> symbol)
+    {
+        const char cString[2]{symbol, '\0'};
+
+        referenceToString += cString;
     }
 
     return referenceToStream;

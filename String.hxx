@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <istream>
 #include <ostream>
 
 class String
@@ -19,6 +20,7 @@ class String
     friend bool operator==(const String& referenceToLeftString, const String& referenceToRightString);
     friend bool operator!=(const String& referenceToLeftString, const String& referenceToRightString);
     friend std::ostream& operator<<(std::ostream& referenceToStream, const String& referenceToString);
+    friend std::istream& operator>>(std::istream& referenceToStream, String& referenceToString);
 
   private:
     char* m_pointerToStorage{nullptr};
