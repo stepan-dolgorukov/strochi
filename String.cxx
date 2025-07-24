@@ -35,31 +35,28 @@ String::String(const char* pointerToCString)
         throw std::runtime_error{"fail to allocate memory for string"};
     }
 
-    m_length = m_sizeStorage = length;
+    m_length = length;
     std::strncpy(m_pointerToStorage, pointerToCString, length);
 }
 
 String::String(const String& referenceToString)
 {
-    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(referenceToString.m_sizeStorage));
+    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(referenceToString.m_length));
 
     if (m_pointerToStorage == nullptr)
     {
         throw std::runtime_error{"fail to allocate memory for string"};
     }
 
-    m_sizeStorage = referenceToString.m_sizeStorage;
     std::strncpy(m_pointerToStorage, referenceToString.m_pointerToStorage, referenceToString.m_length);
     m_length = referenceToString.m_length;
 }
 
 String::String(String&& referenceToString)
     : m_pointerToStorage{referenceToString.m_pointerToStorage},
-      m_sizeStorage{referenceToString.m_sizeStorage},
       m_length{referenceToString.m_length}
 {
     referenceToString.m_pointerToStorage = nullptr;
-    referenceToString.m_sizeStorage = 0u;
     referenceToString.m_length = 0u;
 }
 
@@ -71,14 +68,13 @@ String& String::operator=(const String& referenceToString)
     }
 
     std::free(m_pointerToStorage);
-    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(referenceToString.m_sizeStorage));
+    m_pointerToStorage = reinterpret_cast<char*>(std::malloc(referenceToString.m_length));
 
     if (m_pointerToStorage == nullptr)
     {
         throw std::runtime_error{"fail to allocate memory for string"};
     }
 
-    m_sizeStorage = referenceToString.m_sizeStorage;
     m_length = referenceToString.m_length;
     std::strncpy(m_pointerToStorage, referenceToString.m_pointerToStorage, m_length);
 
@@ -93,7 +89,6 @@ String& String::operator=(String&& referenceToString)
     }
 
     std::free(m_pointerToStorage);
-    m_sizeStorage = referenceToString.m_sizeStorage;
     m_pointerToStorage = referenceToString.m_pointerToStorage;
     referenceToString.m_pointerToStorage = nullptr;
     m_length = referenceToString.m_length;

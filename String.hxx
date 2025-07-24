@@ -26,6 +26,5 @@ class String
 
   private:
     char* m_pointerToStorage{nullptr};
-    std::size_t m_sizeStorage{0u};
     std::size_t m_length{0u};
 };
