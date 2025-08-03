@@ -1,4 +1,5 @@
 FROM ubuntu:noble-20240429
+LABEL org.opencontainers.image.authors=["Stepan Dolgorukov <stepan.dolgorukov@vk.com>"]
 
 COPY \
   CMakeLists.txt \
